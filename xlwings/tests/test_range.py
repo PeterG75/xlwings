@@ -83,6 +83,10 @@ class TestRangeInstantiation(TestBase):
         with self.assertRaises(IndexError):
             a = xw.Range((1, 0), (1, 0)).value
 
+    def test_jagged_array(self):
+        with self.assertRaises(Exception):
+            self.wb1.sheets[0].range('A1').value = [[1], [1, 2]]
+
 
 class TestRangeAttributes(TestBase):
     def test_iterator(self):
